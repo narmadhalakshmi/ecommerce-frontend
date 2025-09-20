@@ -1,29 +1,61 @@
 import axios from "axios";
 
-// Use the correct base URL for cart operations
-const CART_API_URL = "http://ec2-3-82-62-216.compute-1.amazonaws.com:8081/back1/api/cart";
+const API_URL = "http://import axios from "axios";
+
+const API_URL = "http://3.91.29.246:8081/api/cart";
+
+const API_BASE = "http://3.91.29.246:8081/api/cart";
 
 export const addToCart = async (userId, productId) => {
-  return await axios.post(`${CART_API_URL}/add`, {
+  return await axios.post(`${API_BASE}/add`, {
     userId,
     productId,
-    quantity: 1,
+    quantity: 1
   });
 };
 
 export const getCartItems = async (userId) => {
-  const response = await axios.get(`${CART_API_URL}/user/${userId}`);
+  const response = await axios.get(`${API_BASE}/user/${userId}`);
   return response.data;
 };
 
 export const clearCart = async (userId) => {
-  return await axios.delete(`${CART_API_URL}/clear/${userId}`);
+  return await axios.delete(`${API_BASE}/clear/${userId}`);
 };
 
+// Remove Cart Item
 export const removeCartItem = async (cartItemId) => {
-  try {
-    await axios.delete(`${CART_API_URL}/remove/${cartItemId}`);
-  } catch (error) {
-    console.error("Error removing item from cart", error);
-  }
+    try {
+        await axios.delete(`${API_URL}/remove/${cartItemId}`);
+    } catch (error) {
+        console.error("Error removing item from cart", error);
+    }
+};:8081/api/cart";
+
+const API_BASE = "http://3.90.247.3:8081/api/cart";
+
+export const addToCart = async (userId, productId) => {
+  return await axios.post(`${API_BASE}/add`, {
+    userId,
+    productId,
+    quantity: 1
+  });
+};
+
+export const getCartItems = async (userId) => {
+  const response = await axios.get(`${API_BASE}/user/${userId}`);
+  return response.data;
+};
+
+export const clearCart = async (userId) => {
+  return await axios.delete(`${API_BASE}/clear/${userId}`);
+};
+
+// Remove Cart Item
+export const removeCartItem = async (cartItemId) => {
+    try {
+        await axios.delete(`${API_URL}/remove/${cartItemId}`);
+    } catch (error) {
+        console.error("Error removing item from cart", error);
+    }
 };
